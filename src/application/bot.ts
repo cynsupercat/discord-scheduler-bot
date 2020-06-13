@@ -23,13 +23,11 @@ export class Bot implements IBot {
   public listen() {
     const prefix = '!';
 
-
     this._client.on('message', message => {
       if (!message.content.startsWith(prefix) || message.author.bot) 
         return;
 
       message.channel.send('Pong.');
-        
     })
   }
 }
