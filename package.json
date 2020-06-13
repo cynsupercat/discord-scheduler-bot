@@ -1,0 +1,42 @@
+{
+  "name": "discord-scheduler-bot",
+  "version": "1.0.0",
+  "description": "Discord scheduler bot",
+  "main": "app.js",
+  "scripts": {
+    "start": "node build/app.js",
+    "watch": "tsc -p tsconfig.json -w",
+    "test": "mocha -r ts-node/register \"tests/**/*.spec.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cynsupercat/discord-scheduler-bot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "scheduler"
+  ],
+  "author": "Cynthia Subakat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cynsupercat/discord-scheduler-bot/issues"
+  },
+  "homepage": "https://github.com/cynsupercat/discord-scheduler-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^3.9.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.13",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
+    "ts-mockito": "^2.6.1",
+    "ts-node": "^8.10.2"
+  }
+}
