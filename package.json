@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node build/app.js",
     "watch": "tsc -p tsconfig.json -w",
-    "test": "mocha -r ts-node/register \"tests/**/*.spec.ts\""
+    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "coverage": "nyc -r text -e .ts -x \"tests/*.test.ts\" npm run test"
   },
   "repository": {
     "type": "git",

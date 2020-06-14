@@ -7,10 +7,14 @@
     "sourceMap": true,
     "types": [
       "node",
-      "reflect-metadata"
+      "reflect-metadata",
+      "mocha"
     ],
     "outDir": "build",                          
-    "rootDir": "src",
+    "rootDirs": [
+      "src",
+      "tests"
+    ],
     "typeRoots": [
       "node_modules/@types"
     ],
