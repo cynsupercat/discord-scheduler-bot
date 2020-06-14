@@ -30,12 +30,16 @@ export class Bot implements IBot {
       if (!message.content?.startsWith(prefix) || message.author.bot) 
         return;
 
-      const args = message.content.slice(1).split(/ +/);
-      const command = args[0];
+      let args = message.content.slice(1).split(/ +/);
 
+      // first occurence of real args -- index 0 is just !toro
+      const command = args[1];
       const commandHandler = this._commandFactory.create(command);
-      const reply = commandHandler.handle(message, args);
-      
+
+      // 1 = command name, 2...n = real args
+      const commandArgs = args.slice(2);
+      const reply = commandHandler.handle(message, commandArgs);
+
       message.channel.send(reply);
     })
   }

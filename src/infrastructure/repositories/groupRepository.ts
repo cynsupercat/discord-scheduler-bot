@@ -3,7 +3,6 @@ import { IFirestoreClient } from '../interfaces';
 import Group from "../../domain/entities/group";
 import { INFRASTRUCTURE_TYPES } from '../types';
 import { IGroupRepository } from '../../application/interfaces';
-import { object } from 'yup';
 
 @injectable()
 export default class GroupRepository implements IGroupRepository {
