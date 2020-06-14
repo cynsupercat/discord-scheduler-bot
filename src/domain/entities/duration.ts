@@ -11,6 +11,7 @@ export default class Duration {
 
     static fromValue(val: string): Duration {
 
+        // TODO handle wheretotal  duration is 0;
         const errorMessage = "Invalid duration. Value should be in the format of 1h30m or 1h30.";
         const re = /h|m/;
         const split  = val.split(re, 2).filter(Boolean);

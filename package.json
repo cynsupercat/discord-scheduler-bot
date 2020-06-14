@@ -4,7 +4,7 @@
   "description": "Discord scheduler bot",
   "main": "app.js",
   "scripts": {
-    "start": "node build/app.js",
+    "start": "node build/src/app.js",
     "watch": "tsc -p tsconfig.json -w",
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "coverage": "nyc -r text -e .ts -x \"tests/*.test.ts\" npm run test"
@@ -31,12 +31,14 @@
     "immutable": "^4.0.0-rc.12",
     "inversify": "^5.0.1",
     "reflect-metadata": "^0.1.13",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "@types/node": "^14.0.13",
+    "@types/yup": "^0.29.3",
     "chai": "^4.2.0",
     "mocha": "^8.0.1",
     "ts-mockito": "^2.6.1",
