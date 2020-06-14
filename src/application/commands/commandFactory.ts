@@ -3,6 +3,7 @@ import Command from "./command";
 import { APP_TYPES } from '../types';
 import { ICommandFactory } from "../interfaces";
 
+// TODO probs better to use inversify factory https://github.com/inversify/InversifyJS/blob/master/wiki/factory_injection.md
 @injectable()
 export default class CommandFactory implements ICommandFactory {
 
