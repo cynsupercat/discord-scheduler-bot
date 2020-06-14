@@ -24,13 +24,13 @@ export class Bot implements IBot {
   };
 
   public listen() {
-    const prefix = '!';
+    const prefix = '!toro';
 
     this._client.on('message', message => {
       if (!message.content?.startsWith(prefix) || message.author.bot) 
         return;
 
-      let args = message.content.slice(1).split(/ +/);
+      let args = message.content.slice(prefix.length + 1).split(/ +/);
 
       // first occurence of real args -- index 0 is just !toro
       const command = args[1];
@@ -38,9 +38,9 @@ export class Bot implements IBot {
 
       // 1 = command name, 2...n = real args
       const commandArgs = args.slice(2);
-      const reply = commandHandler.handle(message, commandArgs);
-
-      message.channel.send(reply);
+      commandHandler.handle(message, commandArgs)
+        .then(r => message.channel.send(r))
+        .catch(e => message.channel.send(e)); // TODO this is some lazy error handling
     })
   }
 }
