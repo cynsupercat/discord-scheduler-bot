@@ -1,9 +1,9 @@
 require('dotenv').config();
 
 import container from './inversify.config';
-import { TYPES } from './types';
+import { APP_TYPES } from './application/types';
 import { IBot } from './application/interfaces';
 
-let bot = container.get<IBot>(TYPES.Bot);
+let bot = container.get<IBot>(APP_TYPES.Bot);
 
 bot.login().then(() => bot.listen());

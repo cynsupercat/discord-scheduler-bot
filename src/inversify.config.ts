@@ -10,6 +10,8 @@ import FirestoreClient from './infrastructure/firestoreClient';
 import { INFRASTRUCTURE_TYPES } from './infrastructure/types';
 import GroupRepository from './infrastructure/repositories/groupRepository';
 import CommandFactory from './application/commands/commandFactory';
+import Command from './application/commands/command';
+import CreateGroupCommand from './application/commands/create/group/createGroupCommand';
 
 const container = new Container();
 
@@ -21,5 +23,9 @@ container.bind<IFirestoreClient>(INFRASTRUCTURE_TYPES.Firestore).to(FirestoreCli
 
 container.bind<string>(APP_TYPES.Token).toConstantValue(process.env.TOKEN);
 container.bind<Client>(APP_TYPES.Client).toConstantValue(new Client());
+
+container.bind<Command>(APP_TYPES.Command).to(CreateGroupCommand);
+
+
 
 export default container;

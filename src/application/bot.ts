@@ -30,14 +30,18 @@ export class Bot implements IBot {
       if (!message.content?.startsWith(prefix) || message.author.bot) 
         return;
 
-      let args = message.content.slice(prefix.length + 1).split(/ +/);
-
+      let args = message.content.slice(prefix.length + 1).split(/ +/).filter(Boolean);
+      if (args.length <= 0) {
+        message.channel.send('No arguments passed.');
+        return;
+      }
+        
       // first occurence of real args -- index 0 is just !toro
-      const command = args[1];
+      const command = args[0];
       const commandHandler = this._commandFactory.create(command);
 
       // 1 = command name, 2...n = real args
-      const commandArgs = args.slice(2);
+      const commandArgs = args.slice(1);
       commandHandler.handle(message, commandArgs)
         .then(r => message.channel.send(r))
         .catch(e => message.channel.send(e)); // TODO this is some lazy error handling
