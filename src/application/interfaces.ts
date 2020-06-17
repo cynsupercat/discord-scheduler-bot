@@ -3,11 +3,11 @@ import Command from "./commands/command";
 
 export interface IBot {
     login(): Promise<string>;
-    listen(): void;
+    listen() : void;
 }
 
 export interface IGroupRepository {
-    addGroup(group: Group): void;
+    addGroup(group: Group): Promise<void>;
 }
 
 export interface ICommandFactory {

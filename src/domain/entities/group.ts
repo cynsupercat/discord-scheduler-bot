@@ -1,25 +1,27 @@
 import Event from './event';
 import User from './user';
-import { Set as ImmutableSet, List as ImmutableList } from 'immutable';
 
 export default class Group {
-    private readonly _users: Set<User> = new Set();
-    private readonly _events: Event[] = [];
+    channelId: string;
+    users: Set<User> = new Set();
+    events: Event[] = [];
+    name: string;
 
-    readonly channelId: string;
-    readonly users = ImmutableSet(this._users);
-    readonly events = ImmutableList(this._events);
-    readonly name: string;
+    constructor() {}
 
-    constructor(channelId: string, name: string) {
-        if (!name)
-            throw new Error('Group name must be supplied.');
-
+    static new(channelId: string, name: string): Group {
         if (!channelId)
-            throw new Error('Channel ID must be supplied.');
+            throw new Error('Invalid channel id');
 
-        this.name = name;
-        this.channelId = channelId;
+        if (!name)
+            throw new Error('Invalid group name');
+
+        return Object.assign(new Group(), {
+            channelId: channelId,
+            name: name,
+            events: [],
+            users: new Set()
+        });
     }
 
     addUsers(...users: User[]) {
@@ -30,6 +32,6 @@ export default class Group {
         if (event)
             return;
 
-        this._events.push(event);
+        this.events.push(event);
     }
 }

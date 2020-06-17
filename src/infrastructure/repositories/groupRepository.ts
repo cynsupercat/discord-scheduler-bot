@@ -14,8 +14,10 @@ export default class GroupRepository implements IGroupRepository {
         this._client = client;
     }
 
-    addGroup(group: Group) {
-        this._client.db.collection(this._collection).doc(group.channelId);
+    async addGroup(group: Group): Promise<void> {
+        // Firestore doesn't support custom objects. Thanks firestore.
+        const jsonData = JSON.parse(JSON.stringify(group));
+        const result = await this._client.db.collection(this._collection).doc(group.channelId).set(jsonData);
     }
 
     async getGroup(channelId: string): Promise<Group | null> {
